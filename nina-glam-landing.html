@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salón Nina Glam — Realza tu belleza, refleja tu esencia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Manrope:wght@400;500;600;700;800&family=Bonheur+Royale&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blush:#FBEFE9;
+    --blush-soft:#F4DAE0;
+    --card:#FFF9F5;
+    --ink:#2B1B1E;
+    --ink-soft:#5C4247;
+    --rose:#A61045;
+    --rose-light:#D8447A;
+    --wine:#4A0E24;
+    --wine-deep:#320919;
+    --gold:#C9A227;
+    --gold-light:#E7CD7B;
+    --shadow: 0 18px 40px -18px rgba(74,14,36,0.35);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--blush);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-0.01em;}
+
+  .eyebrow{
+    font-family:'Manrope',sans-serif;
+    font-weight:700;
+    font-size:0.72rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--rose);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:22px;height:1px;
+    background:var(--gold);
+    display:inline-block;
+  }
+
+  .script{
+    font-family:'Bonheur Royale',cursive;
+    font-weight:400;
+    color:var(--gold-light);
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    padding:18px 28px;
+    display:flex;align-items:center;justify-content:space-between;
+    backdrop-filter:blur(10px);
+    background:rgba(251,239,233,0.72);
+    border-bottom:1px solid rgba(166,16,69,0.08);
+    transition:background .3s ease;
+  }
+  .brandmark{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Fraunces',serif;font-weight:700;font-size:1.05rem;color:var(--wine);
+  }
+  .brandmark svg{width:22px;height:22px;flex-shrink:0;}
+  nav .nav-cta{
+    font-size:0.82rem;font-weight:700;
+    background:var(--rose);color:#fff;
+    padding:10px 20px;border-radius:999px;
+    box-shadow:0 8px 18px -6px rgba(166,16,69,0.55);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  nav .nav-cta:hover{transform:translateY(-2px);box-shadow:0 12px 22px -6px rgba(166,16,69,0.6);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;
+    padding:140px 28px 100px;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(216,68,122,0.22), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 90% 100%, rgba(201,162,39,0.14), transparent 60%),
+      var(--blush);
+    overflow:hidden;
+  }
+
+  .sparkle{
+    position:absolute;border-radius:50%;
+    background:var(--gold-light);
+    opacity:0.7;
+    animation:twinkle 3.4s ease-in-out infinite;
+  }
+  @keyframes twinkle{
+    0%,100%{opacity:0.15;transform:scale(0.7);}
+    50%{opacity:0.85;transform:scale(1);}
+  }
+
+  .hero-crown{
+    width:44px;height:44px;color:var(--gold);
+    margin-bottom:22px;
+    animation:rise 1s ease both;
+  }
+
+  .hero h1{
+    font-size:clamp(2.8rem, 7vw, 5.4rem);
+    line-height:0.98;
+    color:var(--wine);
+    animation:rise 1s ease both;
+    animation-delay:.08s;
+  }
+  .hero h1 .accent{
+    display:block;
+    background:linear-gradient(100deg, var(--rose) 10%, var(--rose-light) 45%, var(--gold) 90%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero .script-tag{
+    font-family:'Bonheur Royale',cursive;
+    font-size:clamp(1.6rem, 4vw, 2.6rem);
+    color:var(--gold);
+    margin-top:-0.15em;
+    display:block;
+  }
+
+  .hero p.tagline{
+    margin-top:26px;
+    font-size:1.15rem;
+    font-weight:600;
+    color:var(--ink);
+    letter-spacing:0.01em;
+    animation:rise 1s ease both;
+    animation-delay:.16s;
+  }
+  .hero p.sub{
+    margin-top:10px;
+    max-width:480px;
+    color:var(--ink-soft);
+    font-size:0.98rem;
+    line-height:1.6;
+    animation:rise 1s ease both;
+    animation-delay:.22s;
+  }
+
+  @keyframes rise{
+    from{opacity:0;transform:translateY(18px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  .hero-actions{
+    margin-top:36px;
+    display:flex;gap:14px;flex-wrap:wrap;justify-content:center;
+    animation:rise 1s ease both;
+    animation-delay:.3s;
+  }
+
+  .btn-primary{
+    background:var(--rose);
+    color:#fff;
+    font-weight:700;font-size:0.95rem;
+    padding:15px 30px;border-radius:999px;
+    box-shadow:0 14px 26px -10px rgba(166,16,69,0.55);
+    display:inline-flex;align-items:center;gap:10px;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px);background:var(--rose-light);}
+  .btn-primary svg{width:18px;height:18px;}
+
+  .btn-ghost{
+    border:1.5px solid var(--wine);
+    color:var(--wine);
+    font-weight:700;font-size:0.95rem;
+    padding:14px 28px;border-radius:999px;
+    transition:background .25s ease, color .25s ease;
+  }
+  .btn-ghost:hover{background:var(--wine);color:#fff;}
+
+  .scroll-cue{
+    position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
+    width:22px;height:36px;border:1.5px solid var(--rose);border-radius:14px;
+    display:flex;justify-content:center;padding-top:6px;
+  }
+  .scroll-cue::after{
+    content:'';width:4px;height:8px;border-radius:2px;background:var(--rose);
+    animation:cue 1.8s ease-in-out infinite;
+  }
+  @keyframes cue{
+    0%{transform:translateY(0);opacity:1;}
+    60%{transform:translateY(10px);opacity:0;}
+    61%{transform:translateY(0);opacity:0;}
+    100%{transform:translateY(0);opacity:1;}
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{padding:110px 0;}
+  .sec-head{text-align:center;max-width:560px;margin:0 auto 64px;}
+  .sec-head h2{font-size:clamp(2rem,4vw,2.7rem);color:var(--wine);margin-top:14px;}
+  .sec-head p{margin-top:14px;color:var(--ink-soft);font-size:1rem;line-height:1.6;}
+
+  /* ---------- SERVICES ---------- */
+  .services{background:var(--blush);}
+  .service-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:32px 28px;
+  }
+  .service-card{
+    position:relative;
+    padding-top:44px;
+    text-align:center;
+    animation:none;
+  }
+  .oct-badge{
+    width:88px;height:88px;
+    margin:0 auto;
+    clip-path:polygon(29% 0,71% 0,100% 29%,100% 71%,71% 100%,29% 100%,0 71%,0 29%);
+    background:linear-gradient(135deg,var(--rose),var(--gold));
+    display:flex;align-items:center;justify-content:center;
+    position:relative;z-index:2;
+    box-shadow:var(--shadow);
+  }
+  .oct-badge-inner{
+    width:78px;height:78px;
+    clip-path:polygon(29% 0,71% 0,100% 29%,100% 71%,71% 100%,29% 100%,0 71%,0 29%);
+    background:var(--card);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .oct-badge-inner svg{width:34px;height:34px;color:var(--rose);}
+
+  .service-body{
+    margin-top:-24px;
+    background:var(--card);
+    border-radius:22px;
+    padding:44px 26px 28px;
+    box-shadow:0 10px 30px -18px rgba(74,14,36,0.25);
+    border:1px solid rgba(201,162,39,0.18);
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .service-card:hover .service-body{transform:translateY(-6px);box-shadow:0 20px 36px -18px rgba(74,14,36,0.35);}
+
+  .service-body h3{font-size:1.2rem;color:var(--wine);margin-bottom:12px;}
+  .service-body ul{list-style:none;text-align:left;}
+  .service-body li{
+    font-size:0.9rem;color:var(--ink-soft);
+    padding:6px 0 6px 18px;position:relative;
+    border-bottom:1px dashed rgba(166,16,69,0.14);
+  }
+  .service-body li:last-child{border-bottom:none;}
+  .service-body li::before{
+    content:'';position:absolute;left:0;top:14px;
+    width:6px;height:6px;border-radius:50%;background:var(--gold);
+  }
+
+  /* ---------- PROMOS ---------- */
+  .promos{
+    background:linear-gradient(160deg, var(--wine-deep), var(--wine) 55%, var(--rose) 130%);
+    color:var(--blush-soft);
+    position:relative;
+    overflow:hidden;
+  }
+  .promos .sec-head .eyebrow{color:var(--gold-light);}
+  .promos .sec-head .eyebrow::before{background:var(--gold-light);}
+  .promos .sec-head h2{color:#fff;}
+  .promos .sec-head p{color:rgba(255,255,255,0.72);}
+
+  .promo-row{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  }
+  .promo-card{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(231,205,123,0.25);
+    border-radius:20px;
+    padding:32px 26px;
+    backdrop-filter:blur(6px);
+  }
+  .promo-card svg{width:26px;height:26px;color:var(--gold-light);margin-bottom:16px;}
+  .promo-card h3{font-family:'Manrope',sans-serif;font-weight:700;font-size:1.02rem;color:#fff;margin-bottom:8px;}
+  .promo-card p{font-size:0.88rem;color:rgba(255,255,255,0.68);line-height:1.55;}
+
+  .stamp-trail{
+    margin-top:56px;
+    display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;
+  }
+  .stamp-trail .stamp{
+    width:34px;height:34px;
+    clip-path:polygon(29% 0,71% 0,100% 29%,100% 71%,71% 100%,29% 100%,0 71%,0 29%);
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(231,205,123,0.4);
+  }
+  .stamp-trail .stamp.filled{
+    background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  }
+  .stamp-note{
+    text-align:center;margin-top:16px;
+    font-size:0.82rem;color:rgba(255,255,255,0.6);
+    font-style:italic;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--blush);}
+  .contact-grid{
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:stretch;
+  }
+  .info-list{margin-top:28px;display:flex;flex-direction:column;gap:22px;}
+  .info-item{display:flex;gap:16px;align-items:flex-start;}
+  .info-item .ic{
+    width:42px;height:42px;flex-shrink:0;border-radius:50%;
+    background:var(--blush-soft);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .info-item .ic svg{width:19px;height:19px;color:var(--rose);}
+  .info-item h4{font-size:0.95rem;color:var(--wine);margin-bottom:3px;}
+  .info-item p{font-size:0.9rem;color:var(--ink-soft);line-height:1.5;}
+
+  .social-row{margin-top:30px;display:flex;gap:12px;}
+  .social-row a{
+    width:42px;height:42px;border-radius:50%;
+    border:1.5px solid var(--rose);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--rose);
+    transition:background .25s ease,color .25s ease;
+  }
+  .social-row a:hover{background:var(--rose);color:#fff;}
+  .social-row svg{width:18px;height:18px;}
+
+  .cta-card{
+    background:linear-gradient(165deg,var(--rose),var(--wine));
+    border-radius:28px;
+    padding:44px 34px;
+    color:#fff;
+    display:flex;flex-direction:column;justify-content:center;
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+  }
+  .cta-card::after{
+    content:'';position:absolute;right:-40px;top:-40px;width:160px;height:160px;
+    background:radial-gradient(circle, rgba(231,205,123,0.35), transparent 70%);
+  }
+  .cta-card .script{font-size:1.6rem;display:block;margin-bottom:6px;color:var(--gold-light);}
+  .cta-card h3{font-size:1.5rem;color:#fff;margin-bottom:14px;}
+  .cta-card p{font-size:0.92rem;color:rgba(255,255,255,0.82);line-height:1.6;margin-bottom:26px;}
+  .cta-card .btn-primary{background:#fff;color:var(--wine);box-shadow:0 14px 26px -10px rgba(0,0,0,0.35);}
+  .cta-card .btn-primary:hover{background:var(--gold-light);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--wine-deep);
+    color:rgba(255,255,255,0.6);
+    padding:48px 0 30px;
+    text-align:center;
+  }
+  footer .brandmark{justify-content:center;color:#fff;margin-bottom:10px;}
+  footer p{font-size:0.85rem;}
+  footer .fine{margin-top:18px;font-size:0.75rem;color:rgba(255,255,255,0.35);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .service-grid{grid-template-columns:repeat(2,1fr);}
+    .promo-row{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width: 560px){
+    .service-grid{grid-template-columns:1fr;}
+    nav .nav-links-desktop{display:none;}
+    section{padding:80px 0;}
+  }
+
+  :focus-visible{outline:2px solid var(--rose);outline-offset:3px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brandmark">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8L6.5 11L10 5L12 9L14 5L17.5 11L21 8L19 17H5L3 8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    Nina Glam
+  </div>
+  <a class="nav-cta" href="https://wa.me/51943473393?text=Hola%2C%20quiero%20agendar%20una%20cita" target="_blank" rel="noopener">Agenda tu cita</a>
+</nav>
+
+<header class="hero">
+  <div class="sparkle" style="width:6px;height:6px;top:18%;left:12%;animation-delay:.2s;"></div>
+  <div class="sparkle" style="width:4px;height:4px;top:30%;left:82%;animation-delay:.8s;"></div>
+  <div class="sparkle" style="width:8px;height:8px;top:65%;left:8%;animation-delay:1.4s;"></div>
+  <div class="sparkle" style="width:5px;height:5px;top:75%;left:88%;animation-delay:.5s;"></div>
+  <div class="sparkle" style="width:4px;height:4px;top:12%;left:50%;animation-delay:1.1s;"></div>
+
+  <svg class="hero-crown" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8L6.5 11L10 5L12 9L14 5L17.5 11L21 8L19 17H5L3 8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+
+  <h1>SALÓN NINA<span class="accent">Glam</span></h1>
+  <span class="script-tag">tu belleza es nuestra pasión</span>
+
+  <p class="tagline">Realza tu belleza, refleja tu esencia.</p>
+  <p class="sub">Cabello, uñas, cejas, pestañas, facial y maquillaje — todo en un mismo salón, dentro del Mercado 3 de Enero.</p>
+
+  <div class="hero-actions">
+    <a class="btn-primary" href="https://wa.me/51943473393?text=Hola%2C%20quiero%20agendar%20una%20cita" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.07L2 22l5.1-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.62 0-3.14-.44-4.44-1.2l-.32-.19-3.03.79.8-2.95-.21-.31A7.94 7.94 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.38-5.99c-.24-.12-1.41-.7-1.63-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.92-1.18-.71-.63-1.19-1.42-1.33-1.66-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.46-.39-.4-.54-.4h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.41-.58 1.61-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/></svg>
+      Agenda tu cita por WhatsApp
+    </a>
+    <a class="btn-ghost" href="#servicios">Ver servicios</a>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true"></div>
+</header>
+
+<section class="services" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Servicios</span>
+      <h2>Seis especialidades, un mismo estándar de cuidado</h2>
+      <p>Cada visita empieza con lo que necesitas hoy — desde un retoque rápido hasta un cambio completo.</p>
+    </div>
+
+    <div class="service-grid">
+
+      <div class="service-card">
+        <div class="oct-badge"><div class="oct-badge-inner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 18c0-6 2-13 8-13s8 7 8 13"/><path d="M4 18c2 1 4 1.5 8 1.5s6-.5 8-1.5"/></svg>
+        </div></div>
+        <div class="service-body">
+          <h3>Cabello</h3>
+          <ul>
+            <li>Tinte</li>
+            <li>Mechas e iluminación</li>
+            <li>Cortes en tendencia</li>
+            <li>Alisados</li>
+            <li>Hidratación capilar</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="oct-badge"><div class="oct-badge-inner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 13c4-6 16-6 20 0"/><circle cx="12" cy="13" r="2.6"/></svg>
+        </div></div>
+        <div class="service-body">
+          <h3>Pestañas y Cejas</h3>
+          <ul>
+            <li>Pestañas 1x1</li>
+            <li>Laminado de cejas</li>
+            <li>Lifting de pestañas</li>
+            <li>Depilación hindú</li>
+            <li>Diseño con henna</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="oct-badge"><div class="oct-badge-inner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M9 10.5c.5-1 1.5-1.5 3-1.5s2.5.5 3 1.5"/><path d="M9 15c1 1 2 1 3 1s2 0 3-1"/></svg>
+        </div></div>
+        <div class="service-body">
+          <h3>Facial</h3>
+          <ul>
+            <li>Limpieza facial profunda</li>
+            <li>Hidratación facial</li>
+            <li>Peeling</li>
+            <li>Tratamientos personalizados</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="oct-badge"><div class="oct-badge-inner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M7 21V11c0-1.5 1-2.5 2-2.5s2 1 2 2.5v3"/><path d="M11 14v-5c0-1.3.9-2.2 2-2.2s2 .9 2 2.2v5"/><path d="M15 14v-3.6c0-1.2.9-2 1.9-2s1.9.8 1.9 2V16c0 3-2 5-5 5H9c-2.5 0-4-1.2-4.5-3"/></svg>
+        </div></div>
+        <div class="service-body">
+          <h3>Uñas</h3>
+          <ul>
+            <li>Manicure y pedicure</li>
+            <li>Uñas en gel y acrílicas</li>
+            <li>Esmaltado semipermanente</li>
+            <li>Nail art y diseños</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="oct-badge"><div class="oct-badge-inner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 20l3-9c1-3 6-3 7 0l3 9"/><path d="M9 20h8"/><circle cx="12" cy="6" r="2.4"/></svg>
+        </div></div>
+        <div class="service-body">
+          <h3>Maquillaje</h3>
+          <ul>
+            <li>Maquillaje social</li>
+            <li>Maquillaje para novias</li>
+            <li>Maquillaje para quinceañeras</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="oct-badge"><div class="oct-badge-inner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="9" r="4"/><path d="M6 21c0-3.5 2.7-6 6-6s6 2.5 6 6"/></svg>
+        </div></div>
+        <div class="service-body">
+          <h3>Peinados</h3>
+          <ul>
+            <li>Peinados para novias y eventos</li>
+            <li>Ondas y recogidos</li>
+            <li>Trenzas</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="promos" id="promos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Promociones</span>
+      <h2>Más razones para volver</h2>
+      <p>Pregunta por las promos activas del mes cuando reserves tu cita.</p>
+    </div>
+
+    <div class="promo-row">
+      <div class="promo-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 8v13"/><path d="M6 21h12"/><path d="M12 3c-1.5 2-3 2.5-3 4.2 0 1.4 1.3 2.3 3 2.3s3-.9 3-2.3C15 5.5 13.5 5 12 3z"/></svg>
+        <h3>Descuento de cumpleaños</h3>
+        <p>Celebra tu mes con precios especiales en el servicio que elijas.</p>
+      </div>
+      <div class="promo-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/></svg>
+        <h3>Lunes a jueves</h3>
+        <p>Empieza la semana con estilo — precios preferenciales todos los días laborables.</p>
+      </div>
+      <div class="promo-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>
+        <h3>Combos de belleza</h3>
+        <p>Combina servicios de distintas categorías y ahorra en cada visita.</p>
+      </div>
+    </div>
+
+    <div class="stamp-trail" aria-hidden="true">
+      <div class="stamp filled"></div>
+      <div class="stamp filled"></div>
+      <div class="stamp filled"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+      <div class="stamp"></div>
+    </div>
+    <p class="stamp-note">Tu tarjeta de fidelidad: cada visita te acerca a tu próximo servicio gratis.</p>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:56px;">
+      <span class="eyebrow">Visítanos</span>
+      <h2>Confía en los expertos, siéntete perfecta todos los días</h2>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <div class="info-list">
+          <div class="info-item">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div>
+              <h4>Dirección</h4>
+              <p>Av. Perú 4280 — Mercado 3 de Enero, Tienda 26</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+            <div>
+              <h4>Horario</h4>
+              <p>Lunes a domingo · 10:00 a. m. – 8:00 p. m.</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.68 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0122 16.92z"/></svg></div>
+            <div>
+              <h4>Separar cita</h4>
+              <p><a href="https://wa.me/51943473393" target="_blank" rel="noopener">943 473 393</a> &nbsp;·&nbsp; Manicure: <a href="https://wa.me/51943155871" target="_blank" rel="noopener">943 155 871</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-row">
+          <a href="#" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5H16l.5-3H13.5V8.5c0-.9.25-1.5 1.55-1.5H16.5V4.3C16.2 4.26 15.2 4.17 14 4.17c-2.4 0-4 1.46-4 4.15V10.5H7.5v3H10V21h3.5z"/></svg></a>
+          <a href="#" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+          <a href="#" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.4 2.1 1.8 3.6 4 3.8v2.6c-1.5.05-2.8-.4-4-1.3v6.4a5.4 5.4 0 11-5.4-5.4c.3 0 .6.02.9.07v2.7a2.8 2.8 0 102 2.68V3h2.5z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="cta-card">
+        <span class="script">Reserva hoy</span>
+        <h3>Tu cita, en un mensaje</h3>
+        <p>Escríbenos por WhatsApp y coordinamos el servicio, el horario y todo lo que necesites saber antes de venir.</p>
+        <a class="btn-primary" href="https://wa.me/51943473393?text=Hola%2C%20quiero%20agendar%20una%20cita" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.07L2 22l5.1-1.33A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.62 0-3.14-.44-4.44-1.2l-.32-.19-3.03.79.8-2.95-.21-.31A7.94 7.94 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.38-5.99c-.24-.12-1.41-.7-1.63-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.92-1.18-.71-.63-1.19-1.42-1.33-1.66-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.46-.39-.4-.54-.4h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.41-.58 1.61-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/></svg>
+          Escribir por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brandmark">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8L6.5 11L10 5L12 9L14 5L17.5 11L21 8L19 17H5L3 8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      Salón Nina Glam
+    </div>
+    <p>Av. Perú 4280, Mercado 3 de Enero · Tienda 26 · Lunes a domingo, 10 a. m. – 8 p. m.</p>
+    <p class="fine">Realza tu belleza, refleja tu esencia.</p>
+  </div>
+</footer>
+
+</body>
+</html>
